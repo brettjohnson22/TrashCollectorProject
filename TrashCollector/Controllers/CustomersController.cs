@@ -20,7 +20,7 @@ namespace TrashCollector.Controllers
         {
             //var customers = db.Customers.Include(c => c.Address);
             string id = User.Identity.GetUserId();
-            var customer = db.Customers.Where(c => c.ApplicationId == id);
+            Customer customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
             return View(customer);
         }
 
@@ -89,11 +89,13 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,PickupDay,SuspendStart,EndStart,IsSuspended,AmountOwed,AddressID")] Customer customer)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+                var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.PickupDay = customer.PickupDay;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -125,6 +127,37 @@ namespace TrashCollector.Controllers
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        // GET:
+        public ActionResult Suspend(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+        // POST:
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Suspend(Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.IsSuspended = customer.IsSuspended;
+                customerInDb.SuspendStart = customer.SuspendStart;
+                customerInDb.EndStart = customer.EndStart;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(customer);
         }
 
         protected override void Dispose(bool disposing)
