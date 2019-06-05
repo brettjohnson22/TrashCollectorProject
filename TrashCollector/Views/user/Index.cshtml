@@ -3,11 +3,25 @@
     ViewBag.Title = "Index";
 }
 
-@if (ViewBag.displayMenu == "Yes")
+@*@if (ViewBag.displayMenu == "Yes")
 {
     <h1>Welcome Admin. Now you can create user Role.</h1>
     <h3>
         <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
+    </h3>
+}*@
+if (ViewBag.displayMenu == "Employee")
+{
+    <h1>Welcome Employee.</h1>
+    <h3>
+        @Html.ActionLink("Index", "Index", "Employee")
+    </h3>
+}
+else if (ViewBag.displayMenu == "Customer")
+{
+    <h1>Welcome Customer.</h1>
+    <h3>
+        @Html.ActionLink("Index", "Index", "Customer")
     </h3>
 }
 else

@@ -26,6 +26,15 @@ namespace TrashCollector.Controllers
                 {
                     ViewBag.displayMenu = "Yes";
                 }
+                if (isEmployeeUser())
+                {
+                    ViewBag.displayMenu = "Employee";
+                }
+                else
+                {
+                    ViewBag.displayMenu = "Customer";
+                    return View(".Customer/Index");
+                }
                 return View();
             }
             else
@@ -34,7 +43,7 @@ namespace TrashCollector.Controllers
             }
             return View();
         }
-        public Boolean isAdminUser()
+        public bool isAdminUser()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -53,6 +62,24 @@ namespace TrashCollector.Controllers
             }
             return false;
         }
-
+        public bool isEmployeeUser()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                ApplicationDbContext context = new ApplicationDbContext();
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Employee")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 }

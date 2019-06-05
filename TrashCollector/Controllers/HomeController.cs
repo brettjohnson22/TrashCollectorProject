@@ -10,6 +10,7 @@ namespace TrashCollector.Controllers
     {
         public ActionResult Index()
         {
+            //return RedirectToAction("userController", "Index");
             return View();
         }
 
