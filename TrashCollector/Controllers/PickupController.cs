@@ -92,5 +92,29 @@ namespace TrashCollector.Controllers
                 return View();
             }
         }
+        //public ActionResult CheckOff()
+        //{
+        //    return RedirectToAction("Index", "Employee");
+        //}
+
+        // POST: Pickup/Edit/5
+        //[HttpPost]
+        public ActionResult CheckOff(int id)
+        {
+            //try
+            //{
+                var checkedOff = db.PickUps.Find(id);
+                var customer = db.Customers.Single(c => c.Id == checkedOff.CustomerId);
+                checkedOff.IsComplete = true;
+                customer.AmountOwed += checkedOff.Charge;
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Employee");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
+        }
     }
 }

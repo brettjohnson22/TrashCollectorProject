@@ -13,6 +13,7 @@ namespace TrashCollector.Models
         public int Id { get; set; }
 
         [DataType(DataType.Date)]
+        [Display(Name = "Date of Pickup")]
         public DateTime DateOfPickup { get; set; }
 
         [ForeignKey("Customer")]
@@ -25,6 +26,7 @@ namespace TrashCollector.Models
 
         public double Charge { get; set; }
 
+        [Display(Name = "Pickup Completed")]
         public bool IsComplete { get; set; }
 
     }
