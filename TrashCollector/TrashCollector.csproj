@@ -179,25 +179,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906051825539_newmigration.cs" />
-    <Compile Include="Migrations\201906051825539_newmigration.Designer.cs">
-      <DependentUpon>201906051825539_newmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906051842163_addedmigration.cs" />
-    <Compile Include="Migrations\201906051842163_addedmigration.Designer.cs">
-      <DependentUpon>201906051842163_addedmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906051845117_oops.cs" />
-    <Compile Include="Migrations\201906051845117_oops.Designer.cs">
-      <DependentUpon>201906051845117_oops.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906052048512_changedCustomervalues.cs" />
-    <Compile Include="Migrations\201906052048512_changedCustomervalues.Designer.cs">
-      <DependentUpon>201906052048512_changedCustomervalues.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906052104131_reworkedsuspensionbool.cs" />
-    <Compile Include="Migrations\201906052104131_reworkedsuspensionbool.Designer.cs">
-      <DependentUpon>201906052104131_reworkedsuspensionbool.cs</DependentUpon>
+    <Compile Include="Migrations\201906061646013_startover.cs" />
+    <Compile Include="Migrations\201906061646013_startover.Designer.cs">
+      <DependentUpon>201906061646013_startover.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -304,20 +288,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906051825539_newmigration.resx">
-      <DependentUpon>201906051825539_newmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051842163_addedmigration.resx">
-      <DependentUpon>201906051842163_addedmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051845117_oops.resx">
-      <DependentUpon>201906051845117_oops.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906052048512_changedCustomervalues.resx">
-      <DependentUpon>201906052048512_changedCustomervalues.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906052104131_reworkedsuspensionbool.resx">
-      <DependentUpon>201906052104131_reworkedsuspensionbool.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906061646013_startover.resx">
+      <DependentUpon>201906061646013_startover.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
