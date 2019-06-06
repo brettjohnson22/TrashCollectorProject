@@ -183,6 +183,18 @@
     <Compile Include="Migrations\201906061646013_startover.Designer.cs">
       <DependentUpon>201906061646013_startover.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906061850255_addeddaytable.cs" />
+    <Compile Include="Migrations\201906061850255_addeddaytable.Designer.cs">
+      <DependentUpon>201906061850255_addeddaytable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906061905587_dayforeignkey.cs" />
+    <Compile Include="Migrations\201906061905587_dayforeignkey.Designer.cs">
+      <DependentUpon>201906061905587_dayforeignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906061910146_addeddaylist.cs" />
+    <Compile Include="Migrations\201906061910146_addeddaylist.Designer.cs">
+      <DependentUpon>201906061910146_addeddaylist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Address.cs" />
@@ -290,6 +302,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906061646013_startover.resx">
       <DependentUpon>201906061646013_startover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061850255_addeddaytable.resx">
+      <DependentUpon>201906061850255_addeddaytable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061905587_dayforeignkey.resx">
+      <DependentUpon>201906061905587_dayforeignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061910146_addeddaylist.resx">
+      <DependentUpon>201906061910146_addeddaylist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

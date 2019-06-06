@@ -43,9 +43,11 @@ namespace TrashCollector.Controllers
         public ActionResult Create()
         {
             //ViewBag.AddressID = new SelectList(db.Addresses, "Id", "LineOne");
+            var days = db.Days.ToList();
             Customer customer = new Customer();
             customer.ApplicationId = User.Identity.GetUserId();
             customer.Address = new Address();
+            customer.Days = days;
             return View(customer);
         }
 
@@ -95,7 +97,7 @@ namespace TrashCollector.Controllers
             {
                 var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
                 customerInDb.Name = customer.Name;
-                customerInDb.PickupDay = customer.PickupDay;
+                customerInDb.PickUpDay = customer.PickUpDay;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

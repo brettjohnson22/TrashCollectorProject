@@ -14,8 +14,10 @@ namespace TrashCollector.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        [ForeignKey("PickUpDay")]
         [Display(Name = "Weekly Pickup Day")]
-        public DayOfWeek PickupDay { get; set; }
+        public DayOfWeek PickUpDayID { get; set; }
+        public Day PickUpDay { get; set; }
 
         [Display(Name = "Suspend Start Date")]
         [DataType(DataType.Date)]
@@ -43,6 +45,8 @@ namespace TrashCollector.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         public IdentityRole Identity { get; set; }
+
+        public IEnumerable<Day> Days { get; set; }
 
         public Customer()
         {
