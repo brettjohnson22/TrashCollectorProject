@@ -12,14 +12,15 @@ namespace TrashCollector.Models
         [Key]
         public int Id { get; set; }
 
-        public DateTime Date { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateOfPickup { get; set; }
 
         [ForeignKey("Customer")]
-        public int CustomerID { get; set; }
+        public int? CustomerId { get; set; }
         public Customer Customer { get; set; }
 
         [ForeignKey("Address")]
-        public int AddressID { get; set; }
+        public int AddressId { get; set; }
         public Address Address { get; set; }
 
         public double Charge { get; set; }

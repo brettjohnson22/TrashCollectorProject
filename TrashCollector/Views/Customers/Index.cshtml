@@ -8,51 +8,40 @@
 
 <div>
     <hr />
+    <h4>Hello, @Html.DisplayFor(model => model.Name)</h4>
     <dl class="dl-horizontal">
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.PickupDay)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PickupDay)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.AmountOwed)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.AmountOwed)
         </dd>
-        @if (Model.IsSuspended)
+        @if (Model.SuspensionSceduled)
         {
             <dt>
                 @Html.DisplayNameFor(model => model.SuspendStart)
             </dt>
-
             <dd>
                 @Html.DisplayFor(model => model.SuspendStart)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.EndStart)
+                @Html.DisplayNameFor(model => model.SuspendEnd)
             </dt>
-
             <dd>
-                @Html.DisplayFor(model => model.EndStart)
+                @Html.DisplayFor(model => model.SuspendEnd)
             </dd>
         }
         else
         {
             <dt>
-                <p>No Suspension Scheduled.</p>
+                No Suspension Scheduled.
             </dt>
             <dd></dd>
         }
@@ -61,5 +50,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit Pickup Day", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Schedule Suspension", "Suspend", new { id = Model.Id })
+    @Html.ActionLink("Schedule Suspension", "Suspend", new { id = Model.Id }) |
+    @Html.ActionLink("Schedule Extra Pickup", "Create", "PickUp")
 </p>

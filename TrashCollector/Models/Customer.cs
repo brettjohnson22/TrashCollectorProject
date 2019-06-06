@@ -13,10 +13,24 @@ namespace TrashCollector.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [Display(Name = "Weekly Pickup Day")]
         public DayOfWeek PickupDay { get; set; }
+
+        [Display(Name = "Suspend Start Date")]
+        [DataType(DataType.Date)]
         public DateTime? SuspendStart { get; set; }
-        public DateTime? EndStart { get; set; }
-        public bool IsSuspended { get; set; }
+
+        [Display(Name = "Suspend End Date")]
+        [DataType(DataType.Date)]
+        public DateTime? SuspendEnd { get; set; }
+
+        [Display(Name = "Schedule A Suspension")]
+        public bool SuspensionSceduled { get; set; }
+
+        public bool ActiveSuspension { get; set; }
+
+        [Display(Name = "Current Balance")]
         public double AmountOwed { get; set; }
         
 

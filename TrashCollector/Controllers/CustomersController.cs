@@ -151,9 +151,9 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
-                customerInDb.IsSuspended = customer.IsSuspended;
+                customerInDb.SuspensionSceduled = customer.SuspensionSceduled;
                 customerInDb.SuspendStart = customer.SuspendStart;
-                customerInDb.EndStart = customer.EndStart;
+                customerInDb.SuspendEnd = customer.SuspendEnd;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
