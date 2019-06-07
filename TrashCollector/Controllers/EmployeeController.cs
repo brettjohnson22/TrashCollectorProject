@@ -24,5 +24,26 @@ namespace TrashCollector.Controllers
             var customers = db.Customers.Where(c => c.Address.ZipCode == loggedIn.Address.ZipCode);
             return View(customers);
         }
+
+        public ActionResult FindTodaysPickups()
+        {
+            double standarCharge = 15;
+            DayOfWeek today = DateTime.Today.DayOfWeek;
+            var todaysCustomers = db.Customers.Where(c => c.PickUpDayID == today && !c.weeklyDbAdd);
+            foreach (Customer customer in todaysCustomers)
+            {
+                PickUp pickup = new PickUp()
+                {
+                    DateOfPickup = DateTime.Today,
+                    CustomerId = customer.Id,
+                    AddressId = customer.AddressId,
+                    Charge = standarCharge,
+                };
+                customer.weeklyDbAdd = true;
+                db.PickUps.Add(pickup);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

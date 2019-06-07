@@ -19,6 +19,8 @@ namespace TrashCollector.Models
         public DayOfWeek PickUpDayID { get; set; }
         public Day PickUpDay { get; set; }
 
+        public bool weeklyDbAdd { get; set; }
+
         [Display(Name = "Suspend Start Date")]
         [DataType(DataType.Date)]
         public DateTime? SuspendStart { get; set; }

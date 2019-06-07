@@ -56,8 +56,9 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,PickupDay,Address,ApplicationId")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,Name,PickUpDayID,Address,ApplicationId")] Customer customer)
         {
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 db.Customers.Add(customer);
