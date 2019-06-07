@@ -85,10 +85,18 @@ namespace TrashCollector.Controllers
 
         public ActionResult DailyView(string dayToView)
         {
+            ViewBag.DayName = dayToView;
             var day = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayToView);
             var customers = MyCustomers();
             var dailyCustomers = customers.Where(c => c.PickUpDayID == day);
             return View(dailyCustomers);
         }
+
+        public ActionResult ProfileMap(int id)
+        {
+            Customer customer = db.Customers.Include("Address").Single(c=> c.Id == id);
+            return View(customer);
+        }
     }
 }
+//key=AIzaSyA4wbTOCJjL9GA2HudqRFii0OV-eicRd4E

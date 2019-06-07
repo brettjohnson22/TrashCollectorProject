@@ -286,6 +286,7 @@
     <Content Include="Views\Employee\Customers.cshtml" />
     <Content Include="Views\Employee\FilterSelect.cshtml" />
     <Content Include="Views\Employee\DailyView.cshtml" />
+    <Content Include="Views\Employee\ProfileMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
