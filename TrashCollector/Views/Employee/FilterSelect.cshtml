@@ -3,7 +3,7 @@
     ViewBag.Title = "FilterSelect";
 }
 
-<h2>FilterSelect</h2>
+<h2>Select a Day</h2>
 
 @*<form action="./DailyView" method="post">
     <select>
@@ -18,15 +18,12 @@
     <button type="submit" name="submit" value="submit">Submit</button>
 </form>*@
 
-
-
-        <h4>Filter Select</h4>
         <div>
-            @Html.ActionLink("Sunday", "DailyView", new { dayToView = "Sunday" }, "")
-            @Html.ActionLink("Monday", "DailyView", new { dayToView = "Monday" }, "")
-            @Html.ActionLink("Tuesday", "DailyView", new { dayToView = "Tuesday" }, "")
-            @Html.ActionLink("Wednesday", "DailyView", new { dayToView = "Wednesday" }, "")
-            @Html.ActionLink("Thursday", "DailyView", new { dayToView = "Thursday" }, "")
-            @Html.ActionLink("Friday", "DailyView", new { dayToView = "Friday" }, "")
+            @Html.ActionLink("Sunday", "DailyView", new { dayToView = "Sunday" }, "") <br />
+            @Html.ActionLink("Monday", "DailyView", new { dayToView = "Monday" }, "")<br />
+            @Html.ActionLink("Tuesday", "DailyView", new { dayToView = "Tuesday" }, "")<br/>
+            @Html.ActionLink("Wednesday", "DailyView", new { dayToView = "Wednesday" }, "")<br />
+            @Html.ActionLink("Thursday", "DailyView", new { dayToView = "Thursday" }, "")<br />
+            @Html.ActionLink("Friday", "DailyView", new { dayToView = "Friday" }, "")<br />
             @Html.ActionLink("Saturday", "DailyView", new { dayToView = "Saturday" }, "")
         </div>
