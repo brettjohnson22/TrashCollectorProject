@@ -1,0 +1,32 @@
+﻿@model TrashCollector.Models.Customer
+@{
+    ViewBag.Title = "FilterSelect";
+}
+
+<h2>FilterSelect</h2>
+
+@*<form action="./DailyView" method="post">
+    <select>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+    </select>
+    <button type="submit" name="submit" value="submit">Submit</button>
+</form>*@
+
+
+
+        <h4>Filter Select</h4>
+        <div>
+            @Html.ActionLink("Sunday", "DailyView", new { dayToView = "Sunday" }, "")
+            @Html.ActionLink("Monday", "DailyView", new { dayToView = "Monday" }, "")
+            @Html.ActionLink("Tuesday", "DailyView", new { dayToView = "Tuesday" }, "")
+            @Html.ActionLink("Wednesday", "DailyView", new { dayToView = "Wednesday" }, "")
+            @Html.ActionLink("Thursday", "DailyView", new { dayToView = "Thursday" }, "")
+            @Html.ActionLink("Friday", "DailyView", new { dayToView = "Friday" }, "")
+            @Html.ActionLink("Saturday", "DailyView", new { dayToView = "Saturday" }, "")
+        </div>

@@ -16,7 +16,7 @@ namespace TrashCollector.Controllers
             }
             else if (this.User.IsInRole("Employee"))
             {
-                return RedirectToAction("FindTodaysPickups", "Employee");
+                return RedirectToAction("LoginRoutine", "Employee");
             }
             else
             {
