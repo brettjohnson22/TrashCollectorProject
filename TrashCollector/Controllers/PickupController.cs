@@ -43,10 +43,6 @@ namespace TrashCollector.Controllers
             db.PickUps.Add(pickUp);
             db.SaveChanges();
             return RedirectToAction("Index", "Customers");
-            //catch
-            //{
-            //    return View();
-            //}
         }
 
         // GET: Pickup/Edit/5
@@ -92,10 +88,6 @@ namespace TrashCollector.Controllers
                 return View();
             }
         }
-        //public ActionResult CheckOff()
-        //{
-        //    return RedirectToAction("Index", "Employee");
-        //}
 
         // POST: Pickup/Edit/5
         //[HttpPost]
@@ -104,10 +96,13 @@ namespace TrashCollector.Controllers
             //try
             //{
                 var checkedOff = db.PickUps.Find(id);
+            if (!checkedOff.IsComplete)
+            {
                 var customer = db.Customers.Single(c => c.Id == checkedOff.CustomerId);
                 checkedOff.IsComplete = true;
                 customer.AmountOwed += checkedOff.Charge;
                 db.SaveChanges();
+            }
 
                 return RedirectToAction("Index", "Employee");
             //}

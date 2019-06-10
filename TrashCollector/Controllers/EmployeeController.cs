@@ -15,7 +15,7 @@ namespace TrashCollector.Controllers
         public ActionResult Index()
         {
             var pickups = db.PickUps.Include("Address").Include("Customer").Where(p => p.DateOfPickup == DateTime.Today);
-            return View(pickups);
+            return View(pickups.ToList());
         }
         public ActionResult Customers()
         {
@@ -70,10 +70,7 @@ namespace TrashCollector.Controllers
             }
             db.SaveChanges();
         }
-        //public ActionResult DailyView()
-        //{
 
-        //}
         public IEnumerable<Customer> MyCustomers()
         {
             var id = User.Identity.GetUserId();
@@ -83,7 +80,7 @@ namespace TrashCollector.Controllers
             return customers;
         }
 
-        public ActionResult DailyView(string dayToView)
+        public ActionResult DayView(string dayToView)
         {
             ViewBag.DayName = dayToView;
             var day = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), dayToView);
@@ -99,4 +96,3 @@ namespace TrashCollector.Controllers
         }
     }
 }
-//key=AIzaSyA4wbTOCJjL9GA2HudqRFii0OV-eicRd4E

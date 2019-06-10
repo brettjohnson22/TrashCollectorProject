@@ -47,7 +47,6 @@ namespace TrashCollector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            //ViewBag.AddressID = new SelectList(db.Addresses, "Id", "LineOne");
             var days = db.Days.ToList();
             Customer customer = new Customer();
             customer.ApplicationId = User.Identity.GetUserId();
@@ -63,7 +62,6 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name,PickUpDayID,Address,ApplicationId")] Customer customer)
         {
-            //var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 string request = FormatGeocodeParamaters(customer);
@@ -73,8 +71,6 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            //ViewBag.AddressId = new SelectList(db.Addresses, "Id", "LineOne", customer.AddressId);
             return View(customer);
         }
 
@@ -90,7 +86,6 @@ namespace TrashCollector.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.AddressId = new SelectList(db.Addresses, "Id", "LineOne", customer.AddressId);
             return View(customer);
         }
 
@@ -109,7 +104,6 @@ namespace TrashCollector.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.AddressId = new SelectList(db.Addresses, "Id", "LineOne", customer.AddressId);
             return View(customer);
         }
 

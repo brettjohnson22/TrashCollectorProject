@@ -13,7 +13,8 @@
     </style>
 </head>
 <body>
-<h2>Today's Customers in Your Zip Code</h2>
+<h2>Today's Pickups in @Model.First().Address.ZipCode</h2>
+    <br />
 @{
     List<House> houseList = new List<House>();
 }
@@ -62,12 +63,13 @@
             </td>
             <td>
                 @Html.ActionLink("Mark As Complete", "CheckOff", "PickUp", new { id = item.Id }, "") |
-                @Html.ActionLink("View Map", "ProfileMap", new { id = item.CustomerId }) |
+                @Html.ActionLink("View Details", "ProfileMap", new { id = item.CustomerId }) |
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
      }
 </table>
+    <br />
 <div class="container">
     <div class="row">
         <div class="col-md-2"></div>
