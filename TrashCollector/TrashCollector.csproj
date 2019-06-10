@@ -162,6 +162,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIkey.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\201906071309019_customerbool.cs" />
     <Compile Include="Migrations\201906071309019_customerbool.Designer.cs">
       <DependentUpon>201906071309019_customerbool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906101338091_latlong.cs" />
+    <Compile Include="Migrations\201906101338091_latlong.Designer.cs">
+      <DependentUpon>201906101338091_latlong.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -319,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906071309019_customerbool.resx">
       <DependentUpon>201906071309019_customerbool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906101338091_latlong.resx">
+      <DependentUpon>201906101338091_latlong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

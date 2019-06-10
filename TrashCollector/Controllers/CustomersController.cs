@@ -5,7 +5,9 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
@@ -59,9 +61,11 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,PickUpDayID,Address,ApplicationId")] Customer customer)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
+                string request = FormatGeocodeParamaters(customer);
+                SendGeocodeRequest(request);
                 db.Customers.Add(customer);
                 db.Addresses.Add(customer.Address);
                 db.SaveChanges();
@@ -175,7 +179,7 @@ namespace TrashCollector.Controllers
 
         public string FormatGeocodeParamaters(Customer customer)
         {
-            StringBuilder sb = new StringBuilder("json?address=");
+            StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/geocode/json?address=");
             sb.Append(customer.Address.LineOne + ",+");
             sb.Append(customer.Address.City + ",+");
             sb.Append(customer.Address.State + "&key=AIzaSyA4wbTOCJjL9GA2HudqRFii0OV-eicRd4E");
@@ -183,7 +187,23 @@ namespace TrashCollector.Controllers
             return sb.ToString();
         }
 
-        public void SendGeocodeRequest(string parameters)
+        public async Task SendGeocodeRequest(string request)
+        {
+            var uri = new System.Uri(request);
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    string result = await httpClient.GetStringAsync(uri);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+        public void AssignCoordinates()
         {
 
         }
