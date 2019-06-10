@@ -183,6 +183,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="House.cs" />
     <Compile Include="Migrations\201906061646013_startover.cs" />
     <Compile Include="Migrations\201906061646013_startover.Designer.cs">
       <DependentUpon>201906061646013_startover.cs</DependentUpon>
@@ -293,7 +294,7 @@
     <Content Include="Views\PickUp\Create.cshtml" />
     <Content Include="Views\Employee\Customers.cshtml" />
     <Content Include="Views\Employee\FilterSelect.cshtml" />
-    <Content Include="Views\Employee\DailyView.cshtml" />
+    <Content Include="Views\Employee\DayView.cshtml" />
     <Content Include="Views\Employee\ProfileMap.cshtml" />
   </ItemGroup>
   <ItemGroup>

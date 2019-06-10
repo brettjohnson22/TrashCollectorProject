@@ -3,9 +3,19 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Customers in Your Zip Code</h2>
-
+<!DOCTYPE html>
+<html>
+<h2>Today's Customers in Your Zip Code</h2>
+@{ 
+    List<House> houseList = new List<House>();
+    }
+<head>
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
 <table class="table">
     <tr>
         <th>
@@ -26,31 +36,67 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+            House house = new House();
+            house.lat = item.Address.Latitude;
+            house.lng = item.Address.Longitude;
+            houseList.Add(house);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.LineOne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address.LineTwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfPickup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplete)
+            </td>
+            <td>
+                @Html.ActionLink("Mark As Complete", "CheckOff", "PickUp", new { id = item.Id }, "") |
+                @Html.ActionLink("View Map", "ProfileMap", new { id = item.CustomerId }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
 
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Customer.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address.LineOne)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Address.LineTwo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DateOfPickup)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IsComplete)
-    </td>
-    <td>
-        @Html.ActionLink("Mark As Complete", "CheckOff", "PickUp", new {id =item.Id}, "") |
-        @Html.ActionLink("View Map", "ProfileMap", new { id = item.CustomerId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
+    }
+<div class="container">
+    <div style="width: 500px; height: 500px;">
+        <div id="map"></div>
+    </div>
+</div>
+    <script>
+        var map;
+        var centermap = {lat: 42.9712071, lng: -87.9040571}
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: centermap,
+                zoom: 12
+            });
+            @foreach (var house in houseList)
+            {
+                
+                    <text>
+                    customerHouse = { lat: @house.lat, lng: @house.lng }
+                    marker = new google.maps.Marker({
+                    position: customerHouse,
+                    map: map
+                    });
+                    </text>
+             }
+        }
 
-}
+    </script>
+    @{
+        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + APIkey.SecretKey + "&callback=initMap async defer";
+    }
+    <script src=@myScriptSrc></script>
 
 </table>
+</html>
