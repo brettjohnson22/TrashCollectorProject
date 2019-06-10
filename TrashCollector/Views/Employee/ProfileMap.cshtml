@@ -44,12 +44,11 @@
     <script>
         var map;
         var marker;
-        var customerHouse = { lat: -34.397, lng: 150.644 };
-            //{ lat: Model.Address.Latitude, lng: Model.Address.Longitude };
+        var customerHouse = { lat: @Model.Address.Latitude, lng: @Model.Address.Longitude };
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: customerHouse,
-                zoom: 8
+                zoom: 13
             });
             marker = new google.maps.Marker({
                 position: customerHouse,
@@ -60,7 +59,6 @@
     </script>
     @{ 
         var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + APIkey.SecretKey + "&callback=initMap async defer";
-
     }
     <script src=@myScriptSrc></script>
 </body>

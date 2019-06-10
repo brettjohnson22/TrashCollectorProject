@@ -46,7 +46,7 @@
     </td>
     <td>
         @Html.ActionLink("Mark As Complete", "CheckOff", "PickUp", new {id =item.Id}, "") |
-        @Html.ActionLink("View Map", "ProfileMap", new { id = item.Id }) |
+        @Html.ActionLink("View Map", "ProfileMap", new { id = item.CustomerId }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     </td>
 </tr>

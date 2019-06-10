@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -60,13 +61,13 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,PickUpDayID,Address,ApplicationId")] Customer customer)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Name,PickUpDayID,Address,ApplicationId")] Customer customer)
         {
             //var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 string request = FormatGeocodeParamaters(customer);
-                SendGeocodeRequest(request);
+                await SendGeocodeRequest(request, customer);
                 db.Customers.Add(customer);
                 db.Addresses.Add(customer.Address);
                 db.SaveChanges();
@@ -183,12 +184,12 @@ namespace TrashCollector.Controllers
             StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/geocode/json?address=");
             sb.Append(customer.Address.LineOne + ",+");
             sb.Append(customer.Address.City + ",+");
-            sb.Append(customer.Address.State + "&key=AIzaSyA4wbTOCJjL9GA2HudqRFii0OV-eicRd4E");
+            sb.Append(customer.Address.State + "&key=" + APIkey.SecretKey);
             sb.Replace(' ', '+');
             return sb.ToString();
         }
 
-        public async Task SendGeocodeRequest(string request)
+        public async Task SendGeocodeRequest(string request, Customer customer)
         {
             var uri = new System.Uri(request);
             string result;
@@ -197,18 +198,17 @@ namespace TrashCollector.Controllers
                 try
                 {
                     result = await httpClient.GetStringAsync(uri);
-                    JsonObject JSO = new JsonObject();
+                    dynamic jsonData = JObject.Parse(result);
+                    var lat = jsonData.results[0].geometry.location.lat;
+                    var lng = jsonData.results[0].geometry.location.lng;
+                    customer.Address.Latitude = lat;
+                    customer.Address.Longitude = lng;
                 }
                 catch (Exception ex)
                 {
 
                 }
             }
-        }
-
-        public void AssignCoordinates()
-        {
-
         }
     }
 }
