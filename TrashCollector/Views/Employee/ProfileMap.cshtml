@@ -58,6 +58,10 @@
         }
 
     </script>
-    <script src=@APIkey.secretKey async defer></script>
+    @{ 
+        var myScriptSrc = "https://maps.googleapis.com/maps/api/js?key=" + APIkey.SecretKey + "&callback=initMap async defer";
+
+    }
+    <script src=@myScriptSrc></script>
 </body>
 </html>

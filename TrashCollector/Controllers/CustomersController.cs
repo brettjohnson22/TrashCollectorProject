@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -190,11 +191,13 @@ namespace TrashCollector.Controllers
         public async Task SendGeocodeRequest(string request)
         {
             var uri = new System.Uri(request);
+            string result;
             using (var httpClient = new HttpClient())
             {
                 try
                 {
-                    string result = await httpClient.GetStringAsync(uri);
+                    result = await httpClient.GetStringAsync(uri);
+                    JsonObject JSO = new JsonObject();
                 }
                 catch (Exception ex)
                 {
