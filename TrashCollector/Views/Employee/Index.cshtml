@@ -5,10 +5,6 @@
 }
 <!DOCTYPE html>
 <html>
-<h2>Today's Customers in Your Zip Code</h2>
-@{ 
-    List<House> houseList = new List<House>();
-    }
 <head>
     <style>
         #map {
@@ -16,6 +12,12 @@
         }
     </style>
 </head>
+<body>
+<h2>Today's Customers in Your Zip Code</h2>
+@{
+    List<House> houseList = new List<House>();
+}
+
 <table class="table">
     <tr>
         <th>
@@ -37,11 +39,11 @@
     </tr>
 
     @foreach (var item in Model)
-    {
-            House house = new House();
-            house.lat = item.Address.Latitude;
-            house.lng = item.Address.Longitude;
-            houseList.Add(house);
+     {
+        House house = new House();
+        house.lat = item.Address.Latitude;
+        house.lng = item.Address.Longitude;
+        houseList.Add(house);
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Customer.Name)
@@ -64,13 +66,19 @@
                 @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
-
-    }
+     }
+</table>
 <div class="container">
-    <div style="width: 500px; height: 500px;">
-        <div id="map"></div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8" style="width: 100%; height: 500px;">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
+    </body>
+</html>
     <script>
         var map;
         var centermap = {lat: 42.9712071, lng: -87.9040571}
@@ -98,5 +106,5 @@
     }
     <script src=@myScriptSrc></script>
 
-</table>
-</html>
+
+
