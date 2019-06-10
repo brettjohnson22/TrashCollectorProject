@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using TrashCollector.Models;
@@ -170,6 +171,21 @@ namespace TrashCollector.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string FormatGeocodeParamaters(Customer customer)
+        {
+            StringBuilder sb = new StringBuilder("json?address=");
+            sb.Append(customer.Address.LineOne + ",+");
+            sb.Append(customer.Address.City + ",+");
+            sb.Append(customer.Address.State + "&key=AIzaSyA4wbTOCJjL9GA2HudqRFii0OV-eicRd4E");
+            sb.Replace(' ', '+');
+            return sb.ToString();
+        }
+
+        public void SendGeocodeRequest(string parameters)
+        {
+
         }
     }
 }
