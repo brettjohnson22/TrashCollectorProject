@@ -64,7 +64,6 @@
             <td>
                 @Html.ActionLink("Mark As Complete", "CheckOff", "PickUp", new { id = item.Id }, "") |
                 @Html.ActionLink("View Details", "ProfileMap", new { id = item.CustomerId }) |
-                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
             </td>
         </tr>
      }
@@ -83,15 +82,14 @@
 </html>
     <script>
         var map;
-        var centermap = {lat: 42.9712071, lng: -87.9040571}
+        var centermap = {lat: 43.0065380, lng: -87.9071726}
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: centermap,
-                zoom: 12
+                zoom: 13
             });
             @foreach (var house in houseList)
-            {
-                
+             {
                     <text>
                     customerHouse = { lat: @house.lat, lng: @house.lng }
                     marker = new google.maps.Marker({

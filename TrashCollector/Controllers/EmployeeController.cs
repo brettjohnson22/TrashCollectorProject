@@ -14,7 +14,10 @@ namespace TrashCollector.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            var pickups = db.PickUps.Include("Address").Include("Customer").Where(p => p.DateOfPickup == DateTime.Today);
+            var id = User.Identity.GetUserId();
+            var loggedIn = db.Employees.Include("Address").Single(e => e.ApplicationId == id);
+            int loggedZip = loggedIn.Address.ZipCode;
+            var pickups = db.PickUps.Include("Address").Include("Customer").Where(p => p.DateOfPickup == DateTime.Today && p.Address.ZipCode ==loggedZip);
             return View(pickups.ToList());
         }
         public ActionResult Customers()
