@@ -32,7 +32,7 @@ namespace TrashCollector.Controllers
         }
         public void FindTodaysPickups()
         {
-            double standarCharge = 15;
+            double standardCharge = 15;
             DayOfWeek today = DateTime.Today.DayOfWeek;
             var todaysCustomers = db.Customers.Where(c => c.PickUpDayID == today && !c.weeklyDbAdd && !c.ActiveSuspension);
             foreach (Customer customer in todaysCustomers)
@@ -42,7 +42,7 @@ namespace TrashCollector.Controllers
                     DateOfPickup = DateTime.Today,
                     CustomerId = customer.Id,
                     AddressId = customer.AddressId,
-                    Charge = standarCharge,
+                    Charge = standardCharge,
                 };
                 customer.weeklyDbAdd = true;
                 db.PickUps.Add(pickup);
@@ -74,8 +74,8 @@ namespace TrashCollector.Controllers
         public void DeleteCompletedPickups()
         {
             var today = DateTime.Today;
-            var oldpickups = db.PickUps.Where(p => p.DateOfPickup < today && p.IsComplete);
-            foreach (PickUp pickup in oldpickups)
+            var oldPickups = db.PickUps.Where(p => p.DateOfPickup < today && p.IsComplete);
+            foreach (PickUp pickup in oldPickups)
             {
                 db.PickUps.Remove(pickup);
             }
