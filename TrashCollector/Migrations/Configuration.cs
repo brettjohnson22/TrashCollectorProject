@@ -20,25 +20,25 @@ namespace TrashCollector.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            //ApplicationUser employeeUser = context.Users.Where(r => r.UserName == "garbageman").FirstOrDefault();
-            //context.Addresses.AddOrUpdate(x => x.Id,
-            //    new Address()
-            //    {
-            //        Id = 1,
-            //        LineOne = "123 Trash St.",
-            //        City = "Milwaukee",
-            //        State = "WI",
-            //        ZipCode = 53207
-            //    }
-            //    );
-            //context.Employees.AddOrUpdate(x => x.Id,
-            //    new Employee()
-            //    {
-            //        Name = "Garbage Man",
-            //        ApplicationId = employeeUser.Id,
-            //        AddressId = 1
-            //    }
-            //    );
+            ApplicationUser employeeUser = context.Users.Where(r => r.UserName == "garbageman").FirstOrDefault();
+            context.Addresses.AddOrUpdate(x => x.Id,
+                new Address()
+                {
+                    Id = 1,
+                    LineOne = "123 Trash St.",
+                    City = "Milwaukee",
+                    State = "WI",
+                    ZipCode = 53207
+                }
+                );
+            context.Employees.AddOrUpdate(x => x.Id,
+                new Employee()
+                {
+                    Name = "Garbage Man",
+                    ApplicationId = employeeUser.Id,
+                    AddressId = 1
+                }
+                );
             context.Days.AddOrUpdate(x => x.Value,
             new Day() { Value = DayOfWeek.Sunday, Name = "Sunday" },
             new Day() { Value = DayOfWeek.Monday, Name = "Monday" },

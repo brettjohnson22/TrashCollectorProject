@@ -184,29 +184,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="House.cs" />
-    <Compile Include="Migrations\201906061646013_startover.cs" />
-    <Compile Include="Migrations\201906061646013_startover.Designer.cs">
-      <DependentUpon>201906061646013_startover.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061850255_addeddaytable.cs" />
-    <Compile Include="Migrations\201906061850255_addeddaytable.Designer.cs">
-      <DependentUpon>201906061850255_addeddaytable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061905587_dayforeignkey.cs" />
-    <Compile Include="Migrations\201906061905587_dayforeignkey.Designer.cs">
-      <DependentUpon>201906061905587_dayforeignkey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061910146_addeddaylist.cs" />
-    <Compile Include="Migrations\201906061910146_addeddaylist.Designer.cs">
-      <DependentUpon>201906061910146_addeddaylist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906071309019_customerbool.cs" />
-    <Compile Include="Migrations\201906071309019_customerbool.Designer.cs">
-      <DependentUpon>201906071309019_customerbool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906101338091_latlong.cs" />
-    <Compile Include="Migrations\201906101338091_latlong.Designer.cs">
-      <DependentUpon>201906101338091_latlong.cs</DependentUpon>
+    <Compile Include="Migrations\201906110100147_startover.cs" />
+    <Compile Include="Migrations\201906110100147_startover.Designer.cs">
+      <DependentUpon>201906110100147_startover.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -314,23 +294,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906061646013_startover.resx">
-      <DependentUpon>201906061646013_startover.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061850255_addeddaytable.resx">
-      <DependentUpon>201906061850255_addeddaytable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061905587_dayforeignkey.resx">
-      <DependentUpon>201906061905587_dayforeignkey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061910146_addeddaylist.resx">
-      <DependentUpon>201906061910146_addeddaylist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906071309019_customerbool.resx">
-      <DependentUpon>201906071309019_customerbool.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906101338091_latlong.resx">
-      <DependentUpon>201906101338091_latlong.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906110100147_startover.resx">
+      <DependentUpon>201906110100147_startover.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

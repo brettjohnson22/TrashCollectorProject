@@ -99,7 +99,6 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
-                customerInDb.Name = customer.Name;
                 customerInDb.PickUpDay = customer.PickUpDay;
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -7,13 +7,13 @@ namespace TrashCollector.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addeddaytable : IMigrationMetadata
+    public sealed partial class startover : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addeddaytable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(startover));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906061850255_addeddaytable"; }
+            get { return "201906110100147_startover"; }
         }
         
         string IMigrationMetadata.Source

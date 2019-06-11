@@ -24,6 +24,7 @@ namespace TrashCollector.Controllers
         }
         public ActionResult LoginRoutine()
         {
+            DeleteCompletedPickups();
             CreateSuspensions();
             EndSuspensions();
             FindTodaysPickups();
@@ -70,7 +71,16 @@ namespace TrashCollector.Controllers
             }
             db.SaveChanges();
         }
-
+        public void DeleteCompletedPickups()
+        {
+            var today = DateTime.Today;
+            var oldpickups = db.PickUps.Where(p => p.DateOfPickup < today && p.IsComplete);
+            foreach (PickUp pickup in oldpickups)
+            {
+                db.PickUps.Remove(pickup);
+            }
+            db.SaveChanges();
+        }
         public IEnumerable<Customer> MyCustomers()
         {
             var id = User.Identity.GetUserId();

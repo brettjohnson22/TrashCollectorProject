@@ -11,6 +11,7 @@ namespace TrashCollector.Controllers
     public class PickupController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Pickup
         public ActionResult Index()
         {
@@ -34,12 +35,12 @@ namespace TrashCollector.Controllers
         [HttpPost]
         public ActionResult Create(PickUp pickUp)
         {
-            double priceOfPickup = 25;
+            int extraPickupPrice = 25;
             var userId = User.Identity.GetUserId();
             Customer customer = db.Customers.Single(c => c.ApplicationId == userId);
             pickUp.CustomerId = customer.Id;
             pickUp.AddressId = customer.AddressId;
-            pickUp.Charge = priceOfPickup;
+            pickUp.Charge = extraPickupPrice;
             db.PickUps.Add(pickUp);
             db.SaveChanges();
             return RedirectToAction("Index", "Customers");
