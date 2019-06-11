@@ -19,7 +19,7 @@ namespace TrashCollector.Controllers
         }
         public ActionResult Customers()
         {
-            var customers = MyCustomers();
+            var customers = db.Customers.Include("Address");
             return View(customers);
         }
         public ActionResult LoginRoutine()
@@ -55,7 +55,7 @@ namespace TrashCollector.Controllers
         }
         public void CreateSuspensions()
         {
-            var todaysSuspensions = db.Customers.Where(c => c.SuspendStart == DateTime.Today);
+            var todaysSuspensions = db.Customers.Where(c => c.SuspendStart <= DateTime.Today);
             foreach(Customer customer in todaysSuspensions)
             {
                 customer.ActiveSuspension = true;

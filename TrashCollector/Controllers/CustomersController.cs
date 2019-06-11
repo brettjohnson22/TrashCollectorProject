@@ -25,8 +25,15 @@ namespace TrashCollector.Controllers
         {
             //var customers = db.Customers.Include(c => c.Address);
             string id = User.Identity.GetUserId();
-            Customer customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
-            return View(customer);
+            if (id != null)
+            {
+                Customer customer = db.Customers.Where(c => c.ApplicationId == id).FirstOrDefault();
+                return View(customer);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Customers/Details/5
@@ -99,7 +106,7 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 var customerInDb = db.Customers.Single(c => c.Id == customer.Id);
-                customerInDb.PickUpDay = customer.PickUpDay;
+                customerInDb.PickUpDayID = customer.PickUpDayID;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
