@@ -67,7 +67,7 @@ namespace TrashCollector.Controllers
             var todaysRestarts = db.Customers.Where(c => c.SuspendEnd == DateTime.Today);
             foreach (Customer customer in todaysRestarts)
             {
-                customer.ActiveSuspension = true;
+                customer.ActiveSuspension = false;
             }
             db.SaveChanges();
         }
